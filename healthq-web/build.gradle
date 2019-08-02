@@ -1,0 +1,109 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.4.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+		maven { url "https://plugins.gradle.org/m2/" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath "com.moowork.gradle:gradle-node-plugin:1.1.1"
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: "com.moowork.node"
+
+description		 = 'The HealthQ WEB GUI'
+version			 =  file("${projectDir}/version.txt").text.trim()
+group			   = 'com.healthq.web'
+sourceCompatibility = javaCompatabilityVersion
+targetCompatibility = javaCompatabilityVersion
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: springBootVersion
+	testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
+}
+
+node {
+	version		= nodeVersion
+	npmVersion	= npmVersion
+	download	= true
+	workDir		= file("${project.projectDir}/angular/node")
+	nodeModulesDir	= file("${project.projectDir}/angular")
+
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '5.5.1'
+}
+
+
+// Run a local webpack-dev-server instance, see packages.json server target:
+task runAngular(type: NpmTask) {
+	args = [ 'run', 'start' ]
+
+	// Needed so that CTRL-C from console will stop the webpack-dev-server
+	execOverrides { it.standardInput = System.in }
+}
+runAngular.dependsOn(npmInstall)
+
+task buildAngular(type: NpmTask) {
+	args = [ 'run', 'build', '--', "--configuration=$ngEnvironment", "--output-path=dist-$ngEnvironment" ]
+	inputs.files(fileTree("angular/src"))
+	outputs.files(fileTree("angular/dist-$ngEnvironment"))
+}
+
+task installAngular(type: Copy) {
+	from "angular/dist-$ngEnvironment"
+	into 'src/main/resources/static'
+}
+
+task cleanStatic(type: Delete) {
+	delete fileTree('src/main/resources/static') {
+	}
+}
+
+task cleanAngular(type: NpmTask) {
+	args = [ 'run', 'clean' ]
+}
+
+npmInstall.args = ['--loglevel', 'http']
+
+buildAngular.dependsOn(npmInstall)
+installAngular.dependsOn([cleanStatic,buildAngular])
+processResources.dependsOn(installAngular)
+build.dependsOn(buildAngular)
+clean.dependsOn([cleanAngular,cleanStatic])
+
+clean.delete << file('angular/node_modules')
+
+jar {
+	baseName = 'healthq-web'
+	version = "$version-$ngEnvironment"
+}
+
+bootRun {
+	sourceResources sourceSets.main 
+	args = [ '--server.port=4200' ]
+}
+
+bootJar {
+	launchScript()
+	classifier = ngEnvironment.toUpperCase()
+	// This injects the name/version into the JAR manifest so code can get the version:
+	manifest {
+		attributes 'Implementation-Title': 'HealthQ WEB APP',
+			'Implementation-Version': version
+	}
+}
+
