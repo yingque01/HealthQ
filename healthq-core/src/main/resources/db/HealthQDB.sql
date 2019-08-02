@@ -80,8 +80,8 @@ CREATE TABLE IF NOT EXISTS healthq.patient_queue_requests
     id varchar(36) collate utf8mb4_bin not null,
     patients_id varchar(36) collate utf8mb4_bin not null,
     patient_queues_id varchar(36) collate utf8mb4_bin not null,
-    position_in_queue smallint(5) unsigned not null;
-    average_waiting_minutes smallint(5) unsigned not null;
+    position_in_queue smallint(5) unsigned not null,
+    average_waiting_minutes smallint(5) unsigned not null,
     primary key (record_id),
     unique key record_id (record_id),
     unique key patient_queue_requests_id (id),
