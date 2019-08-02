@@ -1,0 +1,3 @@
+rootProject.name = 'healthq'
+
+include "healthq-core", "healthq-rest", "healthq-web"
