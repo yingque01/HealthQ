@@ -1,4 +1,4 @@
-package com.rentbetter.rest.controller;
+package com.healthq.rest.controller;
 
 public class HealthQControllerTest {
 
