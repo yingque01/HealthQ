@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString(callSuper=true)
 @EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
-public class HQClinicsDTO extends BaseDTO {
+public class HealthQClinicsDTO extends BaseDTO {
 	private String address1;
 	private String address2;
 	private String suburbOrCity;
@@ -20,7 +20,7 @@ public class HQClinicsDTO extends BaseDTO {
 	private String postalCode;
 	private String description;
     
-	public HQClinicsDTO(final UUID id, final String address1,
+	public HealthQClinicsDTO(final UUID id, final String address1,
 			final String address2, final String suburbOrCity,
 			final String stateOfProvince, final String country,
 			final String postalCode, final String description) {

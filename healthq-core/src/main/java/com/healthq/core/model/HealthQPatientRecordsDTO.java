@@ -17,17 +17,17 @@ import org.springframework.beans.BeanUtils;
 @ToString(callSuper=true)
 @EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
-public class HQPatientRecordsDTO extends HQPeopleRecordsDTO {
+public class HealthQPatientRecordsDTO extends HealthQPeopleRecordsDTO {
 	private String medicareNumber;
 	
-	public HQPatientRecordsDTO(final UUID id, String firstName,
+	public HealthQPatientRecordsDTO(final UUID id, String firstName,
 			String lastName, String email, String phone, String medicareNumber) {
 		super(id, firstName,
 				lastName, email, phone);
 		this.medicareNumber = medicareNumber;
 	}
 	
-	public HQPatientRecordsDTO(HQPeopleRecordsDTO hqPeopleRecordsDTO) {
+	public HealthQPatientRecordsDTO(HealthQPeopleRecordsDTO hqPeopleRecordsDTO) {
 		BeanUtils.copyProperties(hqPeopleRecordsDTO, this);
 		//then use the setter for fields additional to the parent DTO.
 	}

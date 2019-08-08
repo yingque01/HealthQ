@@ -11,11 +11,11 @@ import lombok.ToString;
 @ToString(callSuper=true)
 @EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
-public class HQClinicRoomsDTO extends BaseDTO {
+public class HealthQClinicRoomsDTO extends BaseDTO {
 	private String clinicsId;
 	private String description;
 
-	public HQClinicRoomsDTO(final UUID id, final String clinicsId,
+	public HealthQClinicRoomsDTO(final UUID id, final String clinicsId,
 			String description) {
 		super(id);
 		this.clinicsId = clinicsId;

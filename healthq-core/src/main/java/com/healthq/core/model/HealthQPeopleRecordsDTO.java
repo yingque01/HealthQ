@@ -11,13 +11,13 @@ import lombok.ToString;
 @ToString(callSuper=true)
 @EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
-public class HQPeopleRecordsDTO extends BaseDTO {
+public class HealthQPeopleRecordsDTO extends BaseDTO {
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String phone;
 	
-	public HQPeopleRecordsDTO(final UUID id, String firstName,
+	public HealthQPeopleRecordsDTO(final UUID id, String firstName,
 			String lastName, String email, String phone) {
 		super(id);
 		this.firstName = firstName;

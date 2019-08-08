@@ -15,13 +15,13 @@ import lombok.ToString;
 @ToString(callSuper=true)
 @EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
-public class HQPatientsQueueRequestsDTO extends BaseDTO {
+public class HealthQPatientsQueueRequestsDTO extends BaseDTO {
 	private String patientsId;
 	private String patientQueuesId;
 	private Integer positionInQueue;
 	private Integer averageWaitingTimeInMinutes;
 
-	public HQPatientsQueueRequestsDTO(final UUID id, final String patientsId,
+	public HealthQPatientsQueueRequestsDTO(final UUID id, final String patientsId,
 			final String patientQueuesId, final Integer positionInQueue,
 			final Integer averageWaitingTimeInMinutes) {
 		super(id);

@@ -16,14 +16,14 @@ import lombok.ToString;
 @ToString(callSuper=true)
 @EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
-public class HQPatientsQueueDTO extends BaseDTO {
+public class HealthQPatientsQueueDTO extends BaseDTO {
 	private String clinicsId;
 	private String clinicRoomsId;
 	private String doctorsId;
 	private ZonedDateTime startedAt;
 	private ZonedDateTime endedAt;
 	
-	public HQPatientsQueueDTO(final UUID id, String clinicRoomsId,
+	public HealthQPatientsQueueDTO(final UUID id, String clinicRoomsId,
 			String doctorsId, final ZonedDateTime startedAt, final ZonedDateTime endedAt) {
 		super(id);
 		this.clinicRoomsId = clinicRoomsId;
