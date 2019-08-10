@@ -7,11 +7,16 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * The entity class for CRUD operations from the database table: healthq.clinics.
+ * @author YingPeng Que
+ *
+ */
 @Data
 @ToString(callSuper=true)
 @EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
-public class HealthQClinicsDTO extends BaseDTO {
+public class HealthQClinics extends BaseEntity {
 	private String address1;
 	private String address2;
 	private String suburbOrCity;
@@ -20,7 +25,7 @@ public class HealthQClinicsDTO extends BaseDTO {
 	private String postalCode;
 	private String description;
     
-	public HealthQClinicsDTO(final UUID id, final String address1,
+	/*public HealthQClinics(final UUID id, final String address1,
 			final String address2, final String suburbOrCity,
 			final String stateOfProvince, final String country,
 			final String postalCode, final String description) {
@@ -32,5 +37,5 @@ public class HealthQClinicsDTO extends BaseDTO {
 		this.country = country;
 		this.postalCode = postalCode;
 		this.description = description;
-	}
+	}*/
 }

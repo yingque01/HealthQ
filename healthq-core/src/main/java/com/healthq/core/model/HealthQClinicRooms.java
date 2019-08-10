@@ -7,18 +7,23 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * The entity class for CRUD operations from the database table: healthq.clinic_rooms.
+ * @author YingPeng Que
+ *
+ */
 @Data
 @ToString(callSuper=true)
 @EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
-public class HealthQClinicRoomsDTO extends BaseDTO {
+public class HealthQClinicRooms extends BaseEntity {
 	private String clinicsId;
 	private String description;
 
-	public HealthQClinicRoomsDTO(final UUID id, final String clinicsId,
+	/*public HealthQClinicRooms(final UUID id, final String clinicsId,
 			String description) {
 		super(id);
 		this.clinicsId = clinicsId;
 		this.description = description;
-	}
+	}*/
 }
