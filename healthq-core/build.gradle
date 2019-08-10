@@ -71,7 +71,7 @@ dependencies {
 	// Don't leave home without it   
 	compile group: 'com.google.guava', name: 'guava', version: '25.1-jre'
 	
-	// Cut back the boilerplate on our DTOs:
+	// Cut back the boilerplate on our DTOs/Entities:
 	compile group: 'org.projectlombok', name: 'lombok', version: lombokVersion
 	
 	 //LOMBOK Dependencies https://stackoverflow.com/questions/14866765/building-with-lomboks-slf4j-and-intellij-cannot-find-symbol-log (check the end)
