@@ -6,7 +6,9 @@ import java.sql.SQLException;
 
 import org.springframework.stereotype.Repository;
 
+import com.healthq.core.model.HealthQDoctors;
 import com.healthq.core.model.HealthQPatients;
+import com.healthq.core.model.HealthQPeopleRecords;
 
 /**
  * This is the CRUD DAO for the rb_rea_publish_events table.
@@ -22,13 +24,21 @@ public class HealthQPatientsDao extends HealthQPeopleRecordsDao {
 		TABLE_NAME = "healthq.patients";
 	}
 
-	protected void setPreparedStatement(PreparedStatement ps,
-			HealthQPatients healthQPatientRecordsDTO)
-			throws SQLException {
-		super.setPreparedStatement(ps, healthQPatientRecordsDTO);
-		ps.setString(9, healthQPatientRecordsDTO.getMedicareNumber());
+	protected StringBuilder constructCreateHealthQPeopleRecordsSql() {
+		StringBuilder createHealthQPeopleRecordsSql = super
+				.constructCreateHealthQPeopleRecordsSql();
+		createHealthQPeopleRecordsSql.append(" , ")
+				.append(HQ_DOCTOR_RECORDS_MEDICARE_NO_COLUMNNAME)
+				.append(") VALUES(?,?,?,?,?,?,?,?,?)");
+		return createHealthQPeopleRecordsSql;
 	}
-
+	
+	protected void setPreparedStatement(PreparedStatement ps,
+			HealthQPeopleRecords healthQPatients) throws SQLException {
+		super.setPreparedStatement(ps, healthQPatients);
+		ps.setString(9, ((HealthQPatients)healthQPatients).getMedicareNumber());
+	}
+	
 	protected HealthQPatients doMapRow(ResultSet rs, int rowNum)
 			throws SQLException {
 		HealthQPatients healthQPatientRecordsDTO = new HealthQPatients(

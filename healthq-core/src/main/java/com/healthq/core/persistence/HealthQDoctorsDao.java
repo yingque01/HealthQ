@@ -34,9 +34,9 @@ public class HealthQDoctorsDao extends HealthQPeopleRecordsDao {
 	}
 
 	protected void setPreparedStatement(PreparedStatement ps,
-			HealthQPeopleRecords healthQDoctorRecordsDTO) throws SQLException {
-		super.setPreparedStatement(ps, healthQDoctorRecordsDTO);
-		ps.setString(9, ((HealthQDoctors)healthQDoctorRecordsDTO).getProviderNumber());
+			HealthQPeopleRecords healthQDoctors) throws SQLException {
+		super.setPreparedStatement(ps, healthQDoctors);
+		ps.setString(9, ((HealthQDoctors)healthQDoctors).getProviderNumber());
 	}
 
 	protected HealthQDoctors doMapRow(ResultSet rs, int rowNum)
