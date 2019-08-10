@@ -16,7 +16,6 @@ import com.healthq.core.model.HealthQPatients;
  */
 @Repository
 public class HealthQPatientsDao extends HealthQPeopleRecordsDao {
-	//2689352635
 	private static final String HQ_DOCTOR_RECORDS_MEDICARE_NO_COLUMNNAME = "MEDICARE_NO";
 
 	public HealthQPatientsDao() {

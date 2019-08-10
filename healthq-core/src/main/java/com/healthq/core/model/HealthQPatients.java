@@ -22,6 +22,7 @@ import org.springframework.beans.BeanUtils;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 public class HealthQPatients extends HealthQPeopleRecords {
+	//2683952653
 	private String medicareNumber;
 
 	public HealthQPatients(final UUID id, final String firstName,
