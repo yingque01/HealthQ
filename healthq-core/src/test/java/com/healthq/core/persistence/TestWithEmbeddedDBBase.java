@@ -41,7 +41,7 @@ public class TestWithEmbeddedDBBase {
 		
 	    //Alternative 2: shorter hand
 		embeddedMysql = EmbeddedMysql.anEmbeddedMysql(config)
-				.addSchema("rbwww_utils", classPathScript("db/PropertyPublisherDB.sql"))
+				.addSchema("healthq", classPathScript("db/HealthQDB.sql"))
 				.start();
 	}
 
