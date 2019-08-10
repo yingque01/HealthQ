@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS healthq.patients
 (
     record_id bigint(20) unsigned not null auto_increment,
     id varchar(36) collate utf8mb4_bin not null,
-    is_active tinyint(1) DEFAULT '1',
+    is_active tinyint(1) default '1',
     first_name varchar(50) collate utf8mb4_bin not null,
     middle_name varchar(50) collate utf8mb4_bin default null,
     last_name varchar(50) collate utf8mb4_bin not null,
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS healthq.clinics
 (
 	record_id bigint(20) unsigned not null auto_increment,
     id varchar(36) collate utf8mb4_bin not null,
-    is_active tinyint(1) DEFAULT '1',
+    is_active tinyint(1) default '1',
     address1 varchar(100) collate utf8mb4_bin default null,
   	address2 varchar(100) collate utf8mb4_bin default null,
   	suburb varchar(50) collate utf8mb4_bin default null,
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS healthq.clinic_rooms
 (
 	record_id bigint(20) unsigned not null auto_increment,
     id varchar(36) collate utf8mb4_bin not null,
-    is_active tinyint(1) DEFAULT '1',
+    is_active tinyint(1) default '1',
     clinics_id varchar(36) collate utf8mb4_bin not null,
     created_date_time datetime default current_timestamp not null,
     updated_date_time datetime default null,
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS healthq.patient_queues
 (
 	record_id bigint(20) unsigned not null auto_increment,
     id varchar(36) collate utf8mb4_bin not null,
-    is_active tinyint(1) DEFAULT '1',
+    is_active tinyint(1) default '1',
     clinics_id varchar(36) collate utf8mb4_bin not null,
     clinic_rooms_id varchar(36) collate utf8mb4_bin not null,
     doctors_id varchar(36) collate utf8mb4_bin not null,
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS healthq.patient_queues
     constraint patient_queues_clinics_fk
         foreign key (clinics_id) references healthq.clinics (id) on update cascade on delete restrict,
     constraint patient_queues_clinic_rooms_fk
-        foreign key (clinic_rooms_id) references healthq.clinic_rooms (id) on update cascade on delete restrictt,
+        foreign key (clinic_rooms_id) references healthq.clinic_rooms (id) on update cascade on delete restrict,
    	constraint patient_queues_doctors_fk
         foreign key (doctors_id) references healthq.doctors (id) on update cascade on delete restrict    
 );
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS healthq.patient_queue_requests
 (
 	record_id bigint(20) unsigned not null auto_increment,
     id varchar(36) collate utf8mb4_bin not null,
-    is_active tinyint(1) DEFAULT '1',
+    is_active tinyint(1) default '1',
     patients_id varchar(36) collate utf8mb4_bin not null,
     patient_queues_id varchar(36) collate utf8mb4_bin default null,    
     joined_queue_date_time datetime default null,
