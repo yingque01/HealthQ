@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS healthq.clinics
   	address2 varchar(100) collate utf8mb4_bin default null,
   	suburb varchar(50) collate utf8mb4_bin default null,
   	state varchar(50) collate utf8mb4_bin default null,
-  	post_code varchar(16) collate utf8mb4_bin default null,
+  	postcode varchar(16) collate utf8mb4_bin default null,
   	clinic_name varchar(100) collate utf8mb4_bin default null,
   	abn bigint(20) unsigned not null,
    	created_date_time datetime default current_timestamp not null,
