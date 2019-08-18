@@ -37,8 +37,8 @@ public class HealthQPatientsDaoTest extends TestWithEmbeddedDBBase {
 				Date.valueOf("1993-01-31"), "Male",
 				"yingque210981@gmail.com", "0412023876", "2683952653");
 		Long pkIndex = healthQPatientsDao.create(healthQPatientToBeCreated);
-		HealthQPatients healthQDoctorCreated = (HealthQPatients) healthQPatientsDao
+		HealthQPatients healthQPatientCreated = (HealthQPatients) healthQPatientsDao
 				.findHealthQPeopleRecordsByRecordId(pkIndex);
-		log.info("healthQPatientToBeCreated :" + healthQDoctorCreated);
+		log.info("healthQPatientToBeCreated :" + healthQPatientCreated);
 	}
 }
