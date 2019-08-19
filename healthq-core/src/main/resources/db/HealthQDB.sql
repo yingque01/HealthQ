@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS healthq.clinic_rooms
     id varchar(36) collate utf8mb4_bin not null,
     is_active tinyint(1) default '1',
     clinics_id varchar(36) collate utf8mb4_bin not null,
+    room_name varchar(100) collate utf8mb4_bin default null,
     created_date_time datetime default current_timestamp not null,
     updated_date_time datetime default null,
     primary key (record_id),
