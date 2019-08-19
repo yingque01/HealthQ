@@ -1,4 +1,4 @@
-CREATE USER IF NOT EXISTS 'test'@'localhost' IDENTIFIED BY 'test';
+CREATE USER IF NOT EXISTS 'test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'test';
 
 CREATE DATABASE IF NOT EXISTS healthq;
 
