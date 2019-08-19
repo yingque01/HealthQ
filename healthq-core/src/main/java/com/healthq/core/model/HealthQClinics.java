@@ -22,20 +22,20 @@ public class HealthQClinics extends BaseEntity {
 	private String suburbOrCity;
 	private String stateOfProvince;
 	private String country;
-	private String postalCode;
-	private String description;
+	private String postCode;
+	private String clinicName;
     
-	/*public HealthQClinics(final UUID id, final String address1,
+	public HealthQClinics(final UUID id, final String address1,
 			final String address2, final String suburbOrCity,
 			final String stateOfProvince, final String country,
-			final String postalCode, final String description) {
+			final String postCode, final String clinicName) {
 		super(id);
 		this.address1 = address1;
 		this.address2 = address2;
 		this.suburbOrCity = suburbOrCity;
 		this.stateOfProvince = stateOfProvince;
 		this.country = country;
-		this.postalCode = postalCode;
-		this.description = description;
-	}*/
+		this.postCode = postCode;
+		this.clinicName = clinicName;
+	}
 }

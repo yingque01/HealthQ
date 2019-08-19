@@ -18,12 +18,12 @@ import lombok.ToString;
 @NoArgsConstructor
 public class HealthQClinicRooms extends BaseEntity {
 	private String clinicsId;
-	private String description;
+	private String roomName;
 
-	/*public HealthQClinicRooms(final UUID id, final String clinicsId,
-			String description) {
+	public HealthQClinicRooms(final UUID id, final String clinicsId,
+			String roomName) {
 		super(id);
 		this.clinicsId = clinicsId;
-		this.description = description;
-	}*/
+		this.roomName = roomName;
+	}
 }
