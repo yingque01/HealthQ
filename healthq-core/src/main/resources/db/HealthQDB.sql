@@ -1,4 +1,5 @@
 CREATE USER IF NOT EXISTS 'test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'test';
+grant all privileges on healthq.* to 'test'@'localhost';
 
 CREATE DATABASE IF NOT EXISTS healthq;
 
