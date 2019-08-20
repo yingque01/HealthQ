@@ -5,7 +5,7 @@ import com.healthq.core.exception.MissingPeopleRecordsException;
 import com.healthq.core.model.HealthQPatients;
 
 /**
- * This is the interface defining the core service logic functions for the HealthQ project.
+ * This is the interface defining the core CRUD service logic functions for the HealthQ project.
  * @author YingPeng Que
  *
  */
