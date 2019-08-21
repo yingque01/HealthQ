@@ -1,6 +1,10 @@
-CREATE USER IF NOT EXISTS 'test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'test';
-grant all privileges on healthq.* to 'test'@'localhost';
+CREATE USER IF NOT EXISTS 'test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'test';-- create a test user
+grant all privileges on healthq.* to 'test'@'localhost';-- grant a test user privileges
 
+/*
+In the future, we could use a different schema for rentbetter core.
+Or we can use multiple database schemas.
+ */
 CREATE DATABASE IF NOT EXISTS healthq;
 
 CREATE TABLE IF NOT EXISTS healthq.doctors
@@ -21,7 +25,7 @@ CREATE TABLE IF NOT EXISTS healthq.doctors
     primary key (record_id),
     unique key record_id (record_id),
     unique key doctors_id (id)
-);
+);-- HealthQ doctors CRM table
 
 CREATE TABLE IF NOT EXISTS healthq.patients
 (
@@ -41,7 +45,7 @@ CREATE TABLE IF NOT EXISTS healthq.patients
     primary key (record_id),
     unique key record_id (record_id),
     unique key patients_id (id)
-);
+);-- HealthQ patients CRM table
 
 CREATE TABLE IF NOT EXISTS healthq.clinics
 (
@@ -60,7 +64,7 @@ CREATE TABLE IF NOT EXISTS healthq.clinics
     primary key (record_id),
     unique key record_id (record_id),
     unique key clinics_id (id)
-);
+);-- HealthQ clinics CRM table
 
 CREATE TABLE IF NOT EXISTS healthq.clinic_rooms
 (
@@ -76,7 +80,7 @@ CREATE TABLE IF NOT EXISTS healthq.clinic_rooms
     unique key clinic_rooms_id (id),
     constraint clinic_rooms_clinics_fk
         foreign key (clinics_id) references healthq.clinics (id) on update cascade on delete restrict
-);
+);-- HealthQ clinic rooms table
 
 CREATE TABLE IF NOT EXISTS healthq.patient_queues
 (
@@ -99,7 +103,7 @@ CREATE TABLE IF NOT EXISTS healthq.patient_queues
         foreign key (clinic_rooms_id) references healthq.clinic_rooms (id) on update cascade on delete restrict,
    	constraint patient_queues_doctors_fk
         foreign key (doctors_id) references healthq.doctors (id) on update cascade on delete restrict    
-);
+);-- HealthQ patient queues table
 
 CREATE TABLE IF NOT EXISTS healthq.patient_queue_requests
 (
@@ -120,4 +124,4 @@ CREATE TABLE IF NOT EXISTS healthq.patient_queue_requests
         foreign key (patients_id) references healthq.patients (id) on update cascade on delete restrict,
    	constraint patient_queue_requests_patient_queues_fk
         foreign key (patient_queues_id) references healthq.patient_queues (id) on update cascade on delete restrict    
-);
+);-- HealthQ patient queue requests table

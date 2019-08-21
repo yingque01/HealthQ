@@ -11,7 +11,7 @@ Spring MVC/boot as the base integration framework, version used being the latest
 DAO : no ORM as I have switched to spring jdbctemplate instead of springJPA or hibernate 
 
 ##database ddl
-The database schema used by this project is documented here /src/main/resources/db/HealthQDB.sql along with MySQL workbench generated .mwb/pdf/svg files.
+The database schema used by this project is documented here /src/main/resources/db/HealthQDB.sql along with MySQL workbench generated .mwb/pdf/svg files. You can comment in the ddl with --(or# prefer -- as Eclipse shows -- comments in a different colour) comment or /star star/ over multiple lines (remember to put the **space after** -- or /star).
 
 ##Test Driven Development: use of real instance vs in-memory instance
 1. Using real instance (can be MySQL 8+, but due to in-memory DB supports 5.7.19 as the highest version do not use any features not compatible with 5.7.19):
