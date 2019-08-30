@@ -25,14 +25,22 @@ import com.healthq.core.persistence.TestWithEmbeddedDBBase;
 public class HealthQCRUDServiceTest extends TestWithEmbeddedDBBase {
 	//The service test class extends TestWithEmbeddedDBBase for when we need to use embedded MySQL Instance
 	@Autowired
-	HealthQCRUDService healthQCRUDService;
+	HealthQCRUDService healthQCRUDService; //can auto wire by interace if there is only one impl 
+	
+	@Autowired
+	HealthQCRUDServiceImpl healthQCRUDServiceImpl;
 	
 	@Test
 	public void testCreateAPatient() {
-		HealthQPatients newPatient = new HealthQPatients(
+		HealthQPatients newPatientToBeCreatedByInterface = new HealthQPatients(
 				UUID.randomUUID(), "John", null, "Smith",
 				Date.valueOf("1993-01-31"), "Male",
 				"yingque210981@gmail.com", "0412023876", "2683952653");
-		log.info("The newPatient created is : "+healthQCRUDService.createAPatient(newPatient));
+		log.info("The newPatient created by interface is : "+healthQCRUDService.createAPatient(newPatientToBeCreatedByInterface));
+		HealthQPatients newPatientToBeCreatedByImpl = new HealthQPatients(
+				UUID.randomUUID(), "John", null, "Smith",
+				Date.valueOf("1993-01-31"), "Male",
+				"yingostar@hotmail.com", "0412443876", "2683952653");
+		log.info("The newPatient created by impl class is : "+healthQCRUDServiceImpl.createAPatient(newPatientToBeCreatedByImpl));
 	}
 }
