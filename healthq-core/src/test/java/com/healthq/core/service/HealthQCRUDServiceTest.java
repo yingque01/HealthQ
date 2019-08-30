@@ -25,8 +25,12 @@ import com.healthq.core.persistence.TestWithEmbeddedDBBase;
 public class HealthQCRUDServiceTest extends TestWithEmbeddedDBBase {
 	//The service test class extends TestWithEmbeddedDBBase for when we need to use embedded MySQL Instance
 	@Autowired
-	HealthQCRUDService healthQCRUDService; //can auto wire by interace if there is only one impl 
-	
+	// can auto wire by interface because
+	// there is only one implemtation to
+	// this interface. Spring would just
+	// use that default implementation.
+	HealthQCRUDService healthQCRUDService;
+
 	@Autowired
 	HealthQCRUDServiceImpl healthQCRUDServiceImpl;
 	
@@ -36,6 +40,7 @@ public class HealthQCRUDServiceTest extends TestWithEmbeddedDBBase {
 				UUID.randomUUID(), "John", null, "Smith",
 				Date.valueOf("1993-01-31"), "Male",
 				"yingque210981@gmail.com", "0412023876", "2683952653");
+		//defaulting to HealthQCRUDServiceImpl here
 		log.info("The newPatient created by interface is : "+healthQCRUDService.createAPatient(newPatientToBeCreatedByInterface));
 		HealthQPatients newPatientToBeCreatedByImpl = new HealthQPatients(
 				UUID.randomUUID(), "John", null, "Smith",
