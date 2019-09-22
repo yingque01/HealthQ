@@ -1,0 +1,6 @@
+think: should we extract address related fields out to an Address class / table?
+  - Not in here the web app (for fast, simple and flat access), maybe in core backend database impl
+
+
+
+todo: uuid generator
